@@ -5,23 +5,16 @@ let resultSearch = [];
 
 let inputSearch = document.getElementById("inputSearch");
 let btnSearch = document.getElementById("btnSearch");
-const resultsGameBox = document.getElementById('resultsGameBox')
+const resultsGameBox = document.getElementById("resultsGameBox");
 
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
-    "X-RapidAPI-Key": "6150e4d77bmsh04abafa6114ef03p1ce7e0jsncc8a1386169e",
-  },
-};
-
-fetch(
-  "https://rawg-video-games-database.p.rapidapi.com/games?key=f62da0af1d41486894d3adad81cbd732&search=call",
-  options
-)
-  .then((response) => response.json())
-  .then((response) => (list = response))
-  .catch((err) => console.error(err));
+inputSearch.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    getSearch();
+  }
+});
+btnSearch.addEventListener("click", () => {
+  getSearch();
+});
 
 function saveResultList() {
   for (const key in list.results) {
@@ -34,7 +27,6 @@ function saveResultList() {
     console.log(`${list.results[key].name}`);
   }
 }
-
 function printResults() {
   const resultsGameBox = document.getElementById("resultsGameBox");
   for (let i = 0; i < resultList.length; i++) {
@@ -63,10 +55,10 @@ function printResults() {
 }
 function printSearchResults() {
   const resultsGameBox = document.getElementById("resultsGameBox");
-  resultsGameBox.innerHTML = ''
+  resultsGameBox.innerHTML = "";
   for (let i = 0; i < resultSearch.length; i++) {
     const gameCard = document.createElement("div");
-    gameCard.classList = "card game m-1";
+    gameCard.classList = "card game m-auto";
     // gameCard.innerHTML=
     // `<h1>${resultSearch[i].gameName}</h1>
     // <h2>${resultSearch[i].gameRating}</h2>
@@ -89,8 +81,8 @@ function printSearchResults() {
   }
 }
 function getSearch() {
-	resultsGameBox.innerHTML = ''
-	resultSearch = []
+  resultsGameBox.innerHTML = "";
+  resultSearch = [];
   const options = {
     method: "GET",
     headers: {
@@ -105,14 +97,10 @@ function getSearch() {
   )
     .then((response) => response.json())
     .then((response) => (listSearch = response))
-	.then(()=> saveSearchResult())
-	.then(()=> printSearchResults())
+    .then(() => saveSearchResult())
+    .then(() => printSearchResults())
     .catch((err) => console.error(err));
 }
-// function searchResults() {
-//   getSearch();
-//   setTimeout(saveSearchResult(), 20000);
-// }
 function saveSearchResult() {
   for (const key in listSearch.results) {
     const game = {
@@ -123,12 +111,6 @@ function saveSearchResult() {
     resultSearch.push(game);
   }
 }
-inputSearch.addEventListener('keypress', function(e){
-	if(e.key === 'Enter'){
-		getSearch()
-	}
-})
-btnSearch.addEventListener('click', ()=>{getSearch()})
 function tests() {
   // for (let i = 0; i < resultList.length; i++) {
   // 	console.log(resultList[i])
