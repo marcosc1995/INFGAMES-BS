@@ -58,13 +58,15 @@ function printSearchResults() {
   resultsGameBox.innerHTML = "";
   for (let i = 0; i < resultSearch.length; i++) {
     const gameCard = document.createElement("div");
-    gameCard.classList = "card game m-auto";
+    gameCard.classList = "card game m-auto my-2";
+    gameCard.style.height = '300px'
     // gameCard.innerHTML=
     // `<h1>${resultSearch[i].gameName}</h1>
     // <h2>${resultSearch[i].gameRating}</h2>
     // `;
     const gameImage = document.createElement("img");
-    gameImage.classList = "card-img-top";
+    gameImage.classList = "card-img-top img-fluid";
+    gameImage.style.height = '130px'
     gameImage.src = resultSearch[i].gameBgImage;
 
     const gameTitle = document.createElement("h2");
