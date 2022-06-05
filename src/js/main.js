@@ -98,7 +98,7 @@ function getSearch() {
     options
   )
     .then((response) => response.json())
-    .then((response) => (listSearch = response))
+    .then((response) => (listSearch = response)) 
     .then(() => saveSearchResult())
     .then(() => printSearchResults())
     .catch((err) => console.error(err));
