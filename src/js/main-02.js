@@ -14,7 +14,8 @@ btnSearch.addEventListener("click", () => {
 
 //BOXES
 let mainBox = document.getElementById("mainBox");
-//FUNCIONS
+//FUNCTIONS
+// 1º FUNCTION THAT PRINT A LIST OF ELEMENTS FROM AN ARRAY
 function printList(arr) {
   mainBox.innerHTML = "";
   for (let i = 0; i < arr.length; i++) {
@@ -22,10 +23,12 @@ function printList(arr) {
     // CARD BODY
     //--------------------------------------------
     const gameCard = document.createElement("div");
-    gameCard.classList = "card game m-auto my-2";
+    gameCard.classList =
+      "card game d-flex flex-column justify-content-between  m-auto my-2";
     //---------------------------------------------
     // CARD IMAGE
     //---------------------------------------------
+    //
     const gameImage = document.createElement("div");
     gameImage.classList = "card-img-top";
     if (arr[i].background_image !== null) {
@@ -37,6 +40,10 @@ function printList(arr) {
     gameImage.style.height = "300px";
     gameImage.style.backgroundSize = "cover";
     gameImage.style.backgroundPosition = "center";
+    gameImage.addEventListener("click", function () {
+      printDetails(arr[i]);
+    });
+
     //---------------------------------------------
     // CARD TITLE
     //---------------------------------------------
@@ -48,7 +55,7 @@ function printList(arr) {
     //---------------------------------------------
     const gameRating = document.createElement("h2");
     gameRating.textContent = `Metacritic ${arr[i].metacritic}`;
-    gameRating.classList = "m-1 fs-5 text-danger";
+    gameRating.classList = "m-1 fs-6 text-danger";
     //---------------------------------------------
     // ADD TO CARD
     gameCard.append(gameImage, gameTitle, gameRating);
@@ -57,7 +64,30 @@ function printList(arr) {
     //---------------------------------------------
   }
 }
+//2º FUNCTION THAT PRINT A DETAILS CARD FOR THE SELECTED GAME FROM AN OBJECT
+//- FRIST USE THE ID OF THE SELECTED GAME TO PRINT THE DETAILS
+function printDetails(obj) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
+      "X-RapidAPI-Key": "6150e4d77bmsh04abafa6114ef03p1ce7e0jsncc8a1386169e",
+    },
+  };
 
+  fetch(
+    `https://rawg-video-games-database.p.rapidapi.com/games/${obj.id}?key=f62da0af1d41486894d3adad81cbd732&`,
+    options
+  )
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .then(()=> mainBox.innerHTML = '')
+  
+  const detailCard = document.createElement('div')
+  detailCard.textContent = obj.name
+  mainBox.append(detailCard)  
+}
+//-----------------------------------------------------------------------
 // 1º PRINT A LIST OF RANDOM GAMES IN THE HOME PAGE
 
 function getHome() {
