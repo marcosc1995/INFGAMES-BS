@@ -19,85 +19,22 @@
     <title>InfGames</title>
   </head>
   <body>
+    <div id="loadMask" class="visible">
+      <img id="loading" class="rotate" src="/src/img/003-gamepad.png" alt="" />
+      <h2 class="mt-4">Loading...</h2>
+    </div>
     <header class="bg-dark">
       <nav class="navbar">
-        <h1 class="text-warning m-2">InfGames</h1>
-
-        <!-- <ul class="p-3 nav text-warning">
-          <li><button class="btn btn-warning rounded-pill m-1">TOP</button></li>
-          <li>
-            <button class="btn btn-warning rounded-pill m-1">PLATFORMS</button>
-          </li>
-          <li>
-            <button class="btn btn-warning rounded-pill m-1">GENRES</button>
-          </li>
-        </ul> -->
+        <h1 id="brand" class="text-warning m-2">InfGames</h1>
       </nav>
-
       <div class="p-3 input-group">
         <input id="inputSearch" class="form-control" type="text" />
         <button id="btnSearch" class="btn btn-outline-warning">Buscar</button>
       </div>
     </header>
-    <!-- <div id="test"></div> -->
     <main class="container d-flex p-4">
-      <!-- <div id="resultsGameBox" class="d-flex flex-wrap m-auto"></div> -->
       <div id="mainBox" class="d-flex flex-wrap m-auto"></div>
-      <!-- <div class="card game">
-        <img class="card-img-top" src="Mario.jpg" alt="" />
-        <div class="card-body">
-          <div class="border container d-flex justify-content-between">
-            <div class="border">
-              <span class="material-icons"> view_in_ar </span>
-              <span class="material-icons"> view_in_ar </span>
-              <span class="material-icons"> view_in_ar </span>
-            </div>
-            <div class="d-flex">
-              <p class="m-1 fs-6">Metacritic</p>
-              <h3 class="m-1 fs-5 text-danger">99</h3>
-            </div>
-          </div>
-          <h2 class="card-title">Game Title</h2>
-          <div class="m-0 d-flex justify-content-between">
-            <p class="m-0">release date</p>
-            <p class="m-0">99-99-9999</p>
-          </div>
-          <hr class="m-0" />
-          <div class="m-0 d-flex justify-content-between">
-            <p class="m-0">Geners</p>
-            <p class="m-0">demo1,demo2</p>
-          </div>
-        </div>
-      </div>
-      <div class="card game">
-        <img class="card-img-top" src="Mario.jpg" alt="" />
-        <div class="card-body">
-          <div class="border container d-flex justify-content-between">
-            <div class="border">
-              <span class="material-icons"> view_in_ar </span>
-              <span class="material-icons"> view_in_ar </span>
-              <span class="material-icons"> view_in_ar </span>
-            </div>
-            <div class="d-flex">
-              <p class="m-1 fs-6">Metacritic</p>
-              <h3 class="m-1 fs-5 text-danger">99</h3>
-            </div>
-          </div>
-          <h2 class="card-title">Game Title</h2>
-          <div class="m-0 d-flex justify-content-between">
-            <p class="m-0">release date</p>
-            <p class="m-0">99-99-9999</p>
-          </div>
-          <hr class="m-0" />
-          <div class="m-0 d-flex justify-content-between">
-            <p class="m-0">Geners</p>
-            <p class="m-0">demo1,demo2</p>
-          </div>
-        </div>
-      </div> -->
     </main>
-
-    <!-- <script src="https://unpkg.com/vue@3"></script> -->
     <script src="src/js/main-02.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
