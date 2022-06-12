@@ -23,13 +23,27 @@
       <img id="loading" class="rotate" src="/src/img/003-gamepad.png" alt="" />
       <h2 class="mt-4">Loading...</h2>
     </div>
-    <header class="bg-dark">
-      <nav class="navbar">
-        <h1 id="brand" class="text-warning m-2">InfGames</h1>
-      </nav>
-      <div class="p-3 input-group">
-        <input id="inputSearch" class="form-control" type="text" />
-        <button id="btnSearch" class="btn btn-outline-warning">Buscar</button>
+    <header id="header">
+      <div class="row p-4 styled-nav justify-content-between h-100">
+        <div class="col-sm">
+          <a id="brand" class="navbar-brand text-warning m-2" href="">
+            <img
+              width="30"
+              height="30"
+              src="/src/img/001-mushroom.png"
+              alt=""
+            />
+            INFGames
+          </a>
+        </div>
+        <div style="height: 30px;" class="col-sm input-group" >
+          <button type="button" class="btn btn-light opacity-75">Tops</button>
+          <button type="button" class="btn btn-light opacity-75">Genres</button>
+          <button type="button" class="btn btn-light opacity-75">Platforms</button>
+          <input id="inputSearch" class="form-control opacity-50" type="text" />
+          <button id="btnSearch" class="btn btn-light opacity-75">Buscar</button>
+        </div>
+        <div class="row" id="headerDetail"></div>
       </div>
     </header>
     <main class="container d-flex p-4">

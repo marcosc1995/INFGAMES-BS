@@ -2,7 +2,9 @@
 let homeList;
 let details;
 const brand = document.getElementById("brand");
-const loadMask = document.getElementById("loadMask")
+const loadMask = document.getElementById("loadMask");
+const header = document.getElementById("header")
+const headerDetail = document.getElementById("headerDetail")
 brand.addEventListener("click", () => {
   getHome();
 });
@@ -11,6 +13,7 @@ let inputSearch = document.getElementById("inputSearch");
 inputSearch.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     getSearch();
+    inputSearch.value = ""
   }
 });
 let btnSearch = document.getElementById("btnSearch");
@@ -22,8 +25,8 @@ let mainBox = document.getElementById("mainBox");
 //FUNCTIONS
 // 1º PRINT A LIST OF RANDOM GAMES IN THE HOME PAGE
 function getHome() {
-  loadMask.classList.add("visible")
-  loadMask.classList.remove("hidden")  
+  loadMask.classList.add("visible");
+  loadMask.classList.remove("hidden");
   const options = {
     method: "GET",
     headers: {
@@ -38,10 +41,10 @@ function getHome() {
     .then((response) => response.json())
     .then((response) => (homeList = response.results))
     .then(() => printList(homeList))
-    .then(()=> {
-      loadMask.classList.remove("visible")
-      loadMask.classList.add("hidden")
-    })
+    .then(() => {
+      loadMask.classList.remove("visible");
+      loadMask.classList.add("hidden");
+    });
 }
 getHome();
 //  FUNCTION THAT PRINT A LIST OF ELEMENTS FROM AN ARRAY
@@ -96,8 +99,8 @@ function printList(arr) {
 // FUNCTION THAT PRINT A DETAILS CARD FOR THE SELECTED GAME FROM AN OBJECT
 //- FRIST USE THE ID OF THE SELECTED GAME TO GET THE DETAILS
 function getDetails(obj) {
-  loadMask.classList.remove("hidden")
-  loadMask.classList.add("visible")
+  loadMask.classList.remove("hidden");
+  loadMask.classList.add("visible");
   const options = {
     method: "GET",
     headers: {
@@ -113,14 +116,24 @@ function getDetails(obj) {
     .then((response) => response.json())
     .then((response) => (details = response))
     .then((response) => printDetails(details))
-    .then(()=> {
-      loadMask.classList.remove("visible")
-      loadMask.classList.add("hidden")      
-    })
+    .then(() => {
+      loadMask.classList.remove("visible");
+      loadMask.classList.add("hidden");
+    });
 }
 
 function printDetails(obj) {
   mainBox.innerHTML = "";
+  header.style.height = '300px'
+  header.style.backgroundImage = `url(${obj.background_image})`  
+  headerDetail.innerHTML = `
+  <div class="row">
+      <div class="col">${obj.released}</div>
+      <div class="col">${obj.playtime}</div>
+    </div>
+    <h2>${obj.name}</h2>
+  `
+  
   const detailCard = document.createElement("div");
   detailCard.innerHTML = `
   <div class="card mb-3" style="max-width: 540px;">
@@ -169,6 +182,8 @@ function printDetails(obj) {
 //2º PRINT THE RESULTS OF A SEARCH
 // FUNCION TO GET SEARCH RESULTS
 function getSearch() {
+  loadMask.classList.remove("hidden");
+  loadMask.classList.add("visible");
   const options = {
     method: "GET",
     headers: {
@@ -183,7 +198,11 @@ function getSearch() {
   )
     .then((response) => response.json())
     .then((response) => (homeList = response.results))
-    .then(() => printList(homeList));
+    .then(() => printList(homeList))
+    .then(() => {
+      loadMask.classList.remove("visible");
+      loadMask.classList.add("hidden");
+    });
 }
 //3º PRINT A LIST OF TOP RATED GAMES
 function getTops() {
