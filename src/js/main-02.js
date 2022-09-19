@@ -3,8 +3,8 @@ let homeList;
 let details;
 const brand = document.getElementById("brand");
 const loadMask = document.getElementById("loadMask");
-const header = document.getElementById("header")
-const headerDetail = document.getElementById("headerDetail")
+const header = document.getElementById("header");
+const headerDetail = document.getElementById("headerDetail");
 brand.addEventListener("click", () => {
   getHome();
 });
@@ -13,12 +13,13 @@ let inputSearch = document.getElementById("inputSearch");
 inputSearch.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     getSearch();
-    inputSearch.value = ""
+    inputSearch.value = "";
   }
 });
 let btnSearch = document.getElementById("btnSearch");
 btnSearch.addEventListener("click", () => {
   getSearch();
+  inputSearch.value = "";
 });
 //BOXES
 let mainBox = document.getElementById("mainBox");
@@ -124,16 +125,18 @@ function getDetails(obj) {
 
 function printDetails(obj) {
   mainBox.innerHTML = "";
-  header.style.height = '300px'
-  header.style.backgroundImage = `url(${obj.background_image})`  
+  header.style.height = "300px";
+  header.style.backgroundImage = `url(${obj.background_image})`;
+  header.style.backgroundPosition = "center";
+  header.style.backgroundSize = "cover";
   headerDetail.innerHTML = `
-  <div class="row">
-      <div class="col">${obj.released}</div>
-      <div class="col">${obj.playtime}</div>
+  <div style="height: 30px" class="text-center">
+      <span  class="p-1 bg-secondary opacity-75 rounded-pill">${obj.released}</span>
+      <span  class="p-1 bg-secondary opacity-75 header-content rounded-pill">AVERAGE PLAYTIME: ${obj.playtime} HOURS</span>
+      <h2 class="mt-2 fs-1">${obj.name}</h2>
     </div>
-    <h2>${obj.name}</h2>
-  `
-  
+  `;
+
   const detailCard = document.createElement("div");
   detailCard.innerHTML = `
   <div class="card mb-3" style="max-width: 540px;">
@@ -184,6 +187,9 @@ function printDetails(obj) {
 function getSearch() {
   loadMask.classList.remove("hidden");
   loadMask.classList.add("visible");
+  header.style.height = 'auto'
+  header.style.backgroundImage = 'none'
+  headerDetail.innerHTML = ''
   const options = {
     method: "GET",
     headers: {

@@ -20,13 +20,13 @@
   </head>
   <body>
     <div id="loadMask" class="visible">
-      <img id="loading" class="rotate" src="/src/img/003-gamepad.png" alt="" />
+      <img id="loading" style="height: 120px; width: 120px;" class="rotate" src="/src/img/003-gamepad.png" alt="" />
       <h2 class="mt-4">Loading...</h2>
     </div>
     <header id="header">
-      <div class="row p-4 styled-nav justify-content-between h-100">
+      <div class="row m-0 p-2 styled-nav justify-content-between h-100">
         <div class="col-sm">
-          <a id="brand" class="navbar-brand text-warning m-2" href="">
+          <a id="brand" class="navbar-brand text-warning" href="">
             <img
               width="30"
               height="30"
@@ -36,14 +36,24 @@
             INFGames
           </a>
         </div>
-        <div style="height: 30px;" class="col-sm input-group" >
+        <div
+          style="height: 40px"
+          class="btn-group bg-light rounded-pill opacity-75 col-sm"
+        >
           <button type="button" class="btn btn-light opacity-75">Tops</button>
           <button type="button" class="btn btn-light opacity-75">Genres</button>
-          <button type="button" class="btn btn-light opacity-75">Platforms</button>
-          <input id="inputSearch" class="form-control opacity-50" type="text" />
-          <button id="btnSearch" class="btn btn-light opacity-75">Buscar</button>
+          <button type="button" class="btn btn-light opacity-75">
+            Platforms
+          </button>
         </div>
-        <div class="row" id="headerDetail"></div>
+        <div
+          style="height: 40px"
+          class="col-sm m-0 bg-light rounded-pill opacity-75 input-group"
+        >
+          <input id="inputSearch" class="form-control opacity-50" type="text" />
+          <button id="btnSearch" class="btn opacity-75">Buscar</button>
+        </div>
+        <div class="color-gray  row" id="headerDetail"></div>
       </div>
     </header>
     <main class="container d-flex p-4">
